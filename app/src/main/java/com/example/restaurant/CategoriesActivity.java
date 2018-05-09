@@ -3,7 +3,7 @@ package com.example.restaurant;
 import android.app.Activity;
 import android.os.Bundle;
 
-public class MainActivity extends Activity {
+public class CategoriesActivity extends Activity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
