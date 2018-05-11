@@ -11,7 +11,6 @@ import java.util.ArrayList;
 
 public class CategoriesActivity extends Activity implements CategoriesRequest.Callback{
 
-    private int ;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -23,7 +22,7 @@ public class CategoriesActivity extends Activity implements CategoriesRequest.Ca
 
     @Override
     public void gotCategories(ArrayList<String> categories) {
-        ArrayAdapter<String> adapter = new ArrayAdapter<>(this,R.id.text, categories);
+        ArrayAdapter<String> adapter = new ArrayAdapter<>(this, 0, categories);
         ListView list = findViewById(R.id.list);
         list.setAdapter(adapter);
     }
