@@ -2,14 +2,17 @@ package com.example.restaurant;
 
 import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.Toast;
 
 import java.util.ArrayList;
 
-public class CategoriesActivity extends Activity implements CategoriesRequest.Callback{
+public class CategoriesActivity extends Activity implements AdapterView.OnItemClickListener ,CategoriesRequest.Callback {
 
 
     @Override
@@ -22,7 +25,7 @@ public class CategoriesActivity extends Activity implements CategoriesRequest.Ca
 
     @Override
     public void gotCategories(ArrayList<String> categories) {
-        ArrayAdapter<String> adapter = new ArrayAdapter<>(this, 0, categories);
+        ArrayAdapter<String> adapter = new ArrayAdapter<>(this,R.layout.list_item,categories);
         ListView list = findViewById(R.id.list);
         list.setAdapter(adapter);
     }
@@ -35,5 +38,17 @@ public class CategoriesActivity extends Activity implements CategoriesRequest.Ca
 
         Toast toast = Toast.makeText(context, text, duration);
         toast.show();
+    }
+
+    @Override
+    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+        String categoryString = (String) parent.getItemAtPosition(position);
+
+        Intent intent = new Intent(CategoriesActivity.this, MenuActivity.class);
+
+        intent.putExtra("search", categoryString);
+
+        startActivity(intent);
+
     }
 }
