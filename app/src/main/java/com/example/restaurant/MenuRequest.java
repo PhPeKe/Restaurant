@@ -20,7 +20,7 @@ public class MenuRequest implements Response.Listener<JSONObject>, Response.Erro
     public Callback thisActivity = null;
 
     public interface Callback {
-        void gotCategories(ArrayList<MenuItem> items);
+        void gotMenuItems(ArrayList<MenuItem> items);
         void gotCategoriesError(String message);
     }
 
@@ -57,7 +57,7 @@ public class MenuRequest implements Response.Listener<JSONObject>, Response.Erro
                 items.add(item);
             }
 
-            thisActivity.gotCategories(items);
+            thisActivity.gotMenuItems(items);
 
         } catch (JSONException e) {
             // Print error message if something goes wrong while retrieving the request
@@ -72,7 +72,7 @@ public class MenuRequest implements Response.Listener<JSONObject>, Response.Erro
         thisActivity.gotCategoriesError(error.getMessage());
     }
 
-    public void getCategories(Callback activity, String search) {
+    public void getMenuItems(Callback activity, String search) {
         System.out.println("Works!!!!!!!!!!!!!2");
         thisActivity = activity;
         RequestQueue queue = Volley.newRequestQueue(context);
