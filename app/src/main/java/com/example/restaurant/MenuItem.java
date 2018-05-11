@@ -9,6 +9,9 @@ public class MenuItem implements Serializable{
     private float price;
     private String category;
 
+    public MenuItem() {
+
+    }
     public MenuItem(String name, String description, String imageUrl, float price, String category) {
         this.name = name;
         this.description = description;

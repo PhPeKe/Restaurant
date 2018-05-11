@@ -41,7 +41,7 @@ public class MenuRequest implements Response.Listener<JSONObject>, Response.Erro
             // Loop through array to extract strings
             for (int i = 0; i < rawItems.length(); i++) {
                 // Initialize item
-                MenuItem item = null;
+                MenuItem item = new MenuItem();
 
                 // Retrieve JSON Object
                 JSONObject oneItem = rawItems.getJSONObject(i);
