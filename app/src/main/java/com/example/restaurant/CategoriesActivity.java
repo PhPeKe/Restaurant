@@ -28,6 +28,7 @@ public class CategoriesActivity extends Activity implements AdapterView.OnItemCl
         ArrayAdapter<String> adapter = new ArrayAdapter<>(this,R.layout.list_item,categories);
         ListView list = findViewById(R.id.list);
         list.setAdapter(adapter);
+        list.setOnItemClickListener(new ListClick());
     }
 
     @Override
@@ -51,4 +52,19 @@ public class CategoriesActivity extends Activity implements AdapterView.OnItemCl
         startActivity(intent);
 
     }
+
+    private class ListClick implements AdapterView.OnItemClickListener {
+        @Override
+        public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+            String categoryString = (String) parent.getItemAtPosition(position);
+
+            Intent intent = new Intent(CategoriesActivity.this, MenuActivity.class);
+
+            intent.putExtra("search", categoryString);
+
+            startActivity(intent);
+
+        }
+    }
+
 }

@@ -5,6 +5,8 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
+import android.widget.ListView;
 
 import java.util.ArrayList;
 
@@ -28,7 +30,9 @@ public class MenuActivity extends Activity implements MenuRequest.Callback, Adap
 
     @Override
     public void gotMenuItems(ArrayList<MenuItem> items) {
-
+        ArrayAdapter<MenuItem> menuAdapter = new ArrayAdapter<>(this, R.layout.activity_menu_item, items);
+        ListView menuList = findViewById(R.id.menuList);
+        menuList.setAdapter(menuAdapter);
     }
 
     @Override
